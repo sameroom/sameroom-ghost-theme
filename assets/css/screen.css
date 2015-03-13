@@ -174,16 +174,20 @@ html {
 }
 
 body {
+    margin: 0 auto;
+    max-width: 850px;
     height: 100%;
     max-height: 100%;
-    font-family: "Merriweather", serif;
-    letter-spacing: 0.01rem;
+    font-family: Roboto, Arial, sans-serif;
     font-size: 1.8rem;
-    line-height: 1.75em;
-    color: #3A4145;
+    line-height: 1.35em;
+    color: #3E3E3E;
     -webkit-font-feature-settings: 'kern' 1;
     -moz-font-feature-settings: 'kern' 1;
     -o-font-feature-settings: 'kern' 1;
+    background-color: #fff;
+    padding: 0 20px;
+    position: relative;
 }
 
 ::-moz-selection {
@@ -200,28 +204,27 @@ h4, h5, h6 {
     -moz-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
     -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
     color: #2E2E2E;
-    line-height: 1.15em;
+    line-height: 1.25em;
     margin: 0 0 0.4em 0;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Roboto Slab', Arial, serif;
+    font-weight: normal;
 }
 
 h1 {
-    font-size: 5rem;
-    letter-spacing: -2px;
-    text-indent: -3px;
+    font-size: 2.4rem;
 }
 
 h2 {
-    font-size: 3.6rem;
+    font-size: 2.0rem;
     letter-spacing: -1px;
 }
 
 h3 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 h4 {
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 h5 {
@@ -245,7 +248,7 @@ p, ul, ol, dl {
     -webkit-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
     -moz-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
     -o-font-feature-settings: 'liga' 1, 'onum' 1, 'kern' 1;
-    margin: 0 0 1.75em 0;
+    margin: 0 0 1.4em 0;
 }
 
 ol, ul {
@@ -468,6 +471,19 @@ margin on the iframe, cause it breaks stuff. */
    4. General - The main styles for the the theme
    ========================================================================== */
 
+.leftCol{
+    position: absolute;
+    width: 260px;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    top: 160px
+}
+
+.mainCol{
+    padding-top: 160px;
+    margin-left: 280px;
+}
+
 /* Big cover image on the home page */
 .main-header {
     position: relative;
@@ -494,6 +510,14 @@ margin on the iframe, cause it breaks stuff. */
 .main-nav a {
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
+}
+
+.headerBottom{
+    display: none;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    max-width: 350px;
+    margin-bottom: 3em;
 }
 
 /* Create a bouncing scroll-down arrow on homepage with cover image */
@@ -567,54 +591,26 @@ margin on the iframe, cause it breaks stuff. */
     width: auto;
 }
 
-.back-button {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.same-o-matic{
     display: inline-block;
-    float: left;
-    height: 38px;
-    padding: 0 15px 0 10px;
-    border: transparent 1px solid;
-    color: #9EABB3;
-    text-align: center;
-    font-size: 12px;
-    text-transform: uppercase;
-    line-height: 35px;
-    border-radius: 3px;
-    background: rgba(0,0,0,0.1);
-    transition: all ease 0.3s;
-}
-.back-button:before {
-    position: relative;
-    bottom: -2px;
-    font-size: 13px;
-    line-height: 0;
-    margin-right: 8px;
+    margin: 0 0 15px -5px;
 }
 
-.subscribe-button {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: inline-block;
-    float: right;
-    height: 38px;
-    padding: 0 20px;
-    border: transparent 1px solid;
-    color: #9EABB3;
-    text-align: center;
-    font-size: 12px;
-    text-transform: uppercase;
-    line-height: 35px;
-    white-space: nowrap;
-    border-radius: 3px;
-    background: rgba(0,0,0,0.1);
-    transition: all ease 0.3s;
+.back-block{
+    position: absolute;
+    top: -80px;
+    left: 0;
 }
-.subscribe-button:before {
-    font-size: 9px;
-    margin-right: 6px;
+
+.back-block-mobile{
+    display: none;
+    margin: 0 0 2em 0;
+
+}
+
+.back-block a,
+.back-block-mobile a{
+    text-decoration: none;
 }
 
 /* Special styles when overlaid on an image*/
@@ -716,13 +712,16 @@ margin on the iframe, cause it breaks stuff. */
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
     position: relative;
-    width: 80%;
-    max-width: 710px;
-    margin: 4rem auto;
     padding-bottom: 4rem;
+    margin-bottom: 4rem;
     border-bottom: #EBF2F6 1px solid;
     word-break: break-word;
     hyphens: auto;
+    overflow: hidden;
+}
+
+.post-header {
+    margin-bottom: 2.8rem;
 }
 
 /* Add a little circle in the middle of the border-bottom on our .post
@@ -745,7 +744,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 body:not(.post-template) .post-title {
-    font-size: 3.6rem;
+    /*font-size: 3.6rem;*/
 }
 
 .post-title a {
@@ -754,8 +753,6 @@ body:not(.post-template) .post-title {
 
 .post-excerpt p {
     margin: 0;
-    font-size: 0.9em;
-    line-height: 1.7em;
 }
 
 .read-more {
@@ -765,8 +762,6 @@ body:not(.post-template) .post-title {
 .post-meta {
     display: block;
     margin: 1.75rem 0 0 0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.5rem;
     line-height: 2.2rem;
     color: #9EABB3;
 }
@@ -796,11 +791,7 @@ body:not(.post-template) .post-title {
 
 .post-date {
     display: inline-block;
-    margin-left: 8px;
-    padding-left: 12px;
-    border-left: #d5dbde 1px solid;
     text-transform: uppercase;
-    font-size: 1.3rem;
     white-space: nowrap;
 }
 
@@ -846,8 +837,11 @@ body:not(.post-template) .post-title {
    5. Single Post - When you click on an individual post
    ========================================================================== */
 
-.post-template .post-header {
-   margin-bottom: 3.4rem;
+
+
+.post-header .post-image{
+    width: 100%;
+    margin-bottom: 3.4rem;
 }
 
 .post-template .post-title {
@@ -855,6 +849,8 @@ body:not(.post-template) .post-title {
 }
 
 .post-template .post-meta {
+    display: inline-block;
+    vertical-align: middle;
     margin: 0;
 }
 
@@ -902,9 +898,7 @@ body:not(.post-template) .post-title {
 /* The author credit area after the post */
 .post-footer {
     position: relative;
-    margin: 6rem 0 0 0;
-    padding: 6rem 0 0 0;
-    border-top: #EBF2F6 1px solid;
+    margin: 0 0 4rem 0;
 }
 
 .post-footer h4 {
@@ -955,10 +949,12 @@ body:not(.post-template) .post-title {
    to be flexible at smaller screen sizes while the share
    links remain at a fixed width the whole time */
 .post-footer .share {
-    position: absolute;
-    top: 6rem;
-    right: 0;
+    display: inline-block;
+    vertical-align: middle;
     width: 140px;
+    position: relative;
+    top: 3px;
+    margin-left: 1em;
 }
 
 .post-footer .share a {
@@ -1332,13 +1328,30 @@ body:not(.post-template) .post-title {
 
 
 /* ==========================================================================
-   10. Media Queries - Smaller than 900px
+   10. Media Queries - Smaller than 750px
    ========================================================================== */
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 750px) {
 
-    .main-nav {
-        padding: 15px;
+    body{
+        max-width: 550px;
+    }
+
+   .leftCol{
+       display: none;
+   }
+
+    .mainCol{
+        margin: auto;
+        padding-top: 50px;
+    }
+    
+    .headerBottom{
+        display: block;
+    }
+
+    .back-block-mobile{
+        display: block;
     }
 
     blockquote {
@@ -1381,9 +1394,6 @@ body:not(.post-template) .post-title {
         font-size: 0.95em
     }
 
-    body:not(.post-template) .post-title {
-        font-size: 3.2rem;
-    }
 
     hr {
         margin: 2.4em 0;
@@ -1391,31 +1401,6 @@ body:not(.post-template) .post-title {
 
     ol, ul {
         padding-left: 2em;
-    }
-
-    h1 {
-        font-size: 4.5rem;
-        text-indent: -2px;
-    }
-
-    h2 {
-        font-size: 3.6rem;
-    }
-
-    h3 {
-        font-size: 3.1rem;
-    }
-
-    h4 {
-        font-size: 2.5rem;
-    }
-
-    h5 {
-        font-size: 2.2rem;
-    }
-
-    h6 {
-        font-size: 1.8rem;
     }
 
     .author-profile {
@@ -1546,8 +1531,6 @@ body:not(.post-template) .post-title {
         width: auto;
         margin-top: 2rem;
         margin-bottom: 2rem;
-        margin-left: 16px;
-        margin-right: 16px;
         padding-bottom: 2rem;
         line-height: 1.65em;
     }
@@ -1585,40 +1568,6 @@ body:not(.post-template) .post-title {
         font-size: 1.6rem;
     }
 
-    h1, h2, h3,
-    h4, h5, h6 {
-        margin: 0 0 0.3em 0;
-    }
-
-    h1 {
-        font-size: 2.8rem;
-        letter-spacing: -1px;
-    }
-
-    h2 {
-        font-size: 2.4rem;
-        letter-spacing: 0;
-    }
-
-    h3 {
-        font-size: 2.1rem;
-    }
-
-    h4 {
-        font-size: 1.9rem;
-    }
-
-    h5 {
-        font-size: 1.8rem;
-    }
-
-    h6 {
-        font-size: 1.8rem;
-    }
-
-    body:not(.post-template) .post-title {
-        font-size: 2.5rem;
-    }
 
     .post-template .post {
         padding-bottom: 0;
@@ -1642,7 +1591,6 @@ body:not(.post-template) .post-title {
     }
 
     .post-meta {
-        font-size: 1.3rem;
         margin-top: 1rem;
     }
 
