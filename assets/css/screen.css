@@ -613,6 +613,10 @@ margin on the iframe, cause it breaks stuff. */
     text-decoration: none;
 }
 
+a.link-feed{
+    text-decoration: none;
+}
+
 /* Special styles when overlaid on an image*/
 .main-nav.overlay {
     position: absolute;
