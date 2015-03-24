@@ -205,18 +205,18 @@ h4, h5, h6 {
     -o-font-feature-settings: 'dlig' 1, 'liga' 1, 'lnum' 1, 'kern' 1;
     color: #2E2E2E;
     line-height: 1.25em;
-    margin: 0 0 0.4em 0;
+    margin: 2em 0 1.5em 0;
     font-family: 'Roboto Slab', Arial, serif;
     font-weight: normal;
 }
 
 h1 {
+    margin:0 0 0.4em 0;
     font-size: 2.4rem;
 }
 
 h2 {
-    font-size: 2.0rem;
-    letter-spacing: -1px;
+    font-size: 1.8rem;
 }
 
 h3 {
@@ -251,8 +251,12 @@ p, ul, ol, dl {
     margin: 0 0 1.4em 0;
 }
 
-ol, ul {
-    padding-left: 3rem;
+ul {
+    padding-left: 2rem;
+}
+
+ol{
+    padding-left: 2.5rem;
 }
 
 ol ol, ul ul,
@@ -279,7 +283,7 @@ dl dd {
 }
 
 li {
-    margin: 0.4em 0;
+    margin: 0;
 }
 
 li li {
@@ -845,7 +849,7 @@ body:not(.post-template) .post-title {
 
 .post-header .post-image{
     width: 100%;
-    margin-bottom: 3.4rem;
+    margin-bottom: 4rem;
 }
 
 .post-template .post-title {
@@ -894,9 +898,9 @@ body:not(.post-template) .post-title {
 /* Break out larger images to be wider than the main text column
    the class is applied with jQuery */
 .post-content .full-img {
-    width: 126%;
+    width: 100%;
     max-width: none;
-    margin: 0 -13%;
+    margin: 0 auto;
 }
 
 /* The author credit area after the post */
