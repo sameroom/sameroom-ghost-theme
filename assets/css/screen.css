@@ -725,7 +725,7 @@ a.link-feed{
     border-bottom: #EBF2F6 1px solid;
     word-break: break-word;
     hyphens: auto;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .post-header {
