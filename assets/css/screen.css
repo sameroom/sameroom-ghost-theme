@@ -871,7 +871,7 @@ body:not(.post-template) .post-title {
 /* Stop .full-img from creating horizontal scroll - slight hack due to
    imperfections with browser width % calculations and rounding */
 .post-template .content {
-    overflow: hidden;
+    overflow: visible;
 }
 
 /* Tweak the .post wrapper style */
