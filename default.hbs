@@ -9,7 +9,6 @@
     <title>{{meta_title}}</title>
     <meta name="description" content="Sameroom helps connect chatrooms (even when they’re running on completely different services).">
 
-
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -33,6 +32,12 @@
     <meta name="msapplication-config" content="https://d3qqplkb829d0t.cloudfront.net/img/favicon/browserconfig.xml?v=0.6.0.0">
     <meta name="theme-color" content="#ffffff">
 
+    {{#is "home"}}
+    <meta property="og:title" content="Sameroom unifies chatrooms">
+    <meta property="og:image" content="https://d3qqplkb829d0t.cloudfront.net/img/sameroom-og-image.png?v=0.6.0.0">
+    <meta property="og:site_name" content="Sameroom">
+    <meta property="og:description" content="Sameroom helps connect chatrooms (even when they’re running on completely different services).">
+    {{/is}}
 
     {{! Styles'n'Scripts }}
     <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
