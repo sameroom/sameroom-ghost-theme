@@ -60,7 +60,7 @@
         $(".scroll-down").arctic_scroll();
 
         // Populate post index
-        $('[data-tag]').ghostTown({limit: 5});
+        $('[data-tag]').ghostTown({feed:'/blog/rss',limit: 5});
 
     });
 
