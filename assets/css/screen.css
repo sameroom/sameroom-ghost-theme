@@ -1054,6 +1054,18 @@ body:not(.post-template) .post-title {
     top: -33px;
 }
 
+.post-index ul{
+    padding: 0;
+}
+
+.post-index li{
+    list-style: none;
+}
+
+.post-index li small{
+    display: none;
+}
+
 /* ==========================================================================
    6. Author profile
    ========================================================================== */

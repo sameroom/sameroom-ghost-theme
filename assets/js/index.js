@@ -59,6 +59,9 @@
 
         $(".scroll-down").arctic_scroll();
 
+        // Populate post index
+        $('[data-tag]').ghostTown({limit: 5});
+
     });
 
     // smartresize
