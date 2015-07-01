@@ -1095,17 +1095,17 @@ body:not(.post-template) .post-title {
     height: 10%;
     min-height: 100px;
     background: transparent;
+    display: none;
 }
 
 .author-profile {
     padding: 0 15px 5rem 15px;
-    border-bottom: #EBF2F6 1px solid;
     text-align: center;
 }
 
 /* Add a little circle in the middle of the border-bottom */
 .author-profile:after {
-    display: block;
+    display: none;
     content: "";
     width: 7px;
     height: 7px;
