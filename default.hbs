@@ -66,6 +66,16 @@
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/jquery.ghost-town.js"}}"></script>
-
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            // Populate post index
+            var tags = [];
+            jQuery('.post-meta .tags a').each(function () {
+                tags.push($(this).text());
+            })
+            jQuery('[data-tag]').data('tag', tags.join('::'));
+            jQuery('[data-tag]').ghostTown({limit: 5});
+        });
+    </script>
 </body>
 </html>

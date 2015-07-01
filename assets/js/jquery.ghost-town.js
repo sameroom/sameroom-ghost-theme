@@ -21,7 +21,7 @@
     // Set up necessary element and properties
     function GhostTown(element, options) {
         // Empty element and get tag name
-        this.tag = $(element).empty().data('tag');
+        this.tag = $(element).empty().data('tag').split('::');
 
         // Set element
         this.element = element;
@@ -61,9 +61,26 @@
         var feeds = [],
             self = this;
 
+        // Check if we're on the live site (hosted under '/blog')
+        var pathSegment = window.location.pathname.replace(/^\//,'').split('/',1)[0];
+        var subdirectory = '';
+
+        if (pathSegment == 'blog') subdirectory = '/blog';
+
+        var url = subdirectory + this.options.feed;
+        var url2 = null;
+
+        if (typeof(this.tag[0]) != 'undefined' && this.tag[0]){
+            var tag1 = this.tag[0].replace(/[:\/\?#\[\]@!$&'()*+,;=\\]/g, '').replace(/[\:\s]/g,'-');
+            url = subdirectory + '/tag/' + tag1 + this.options.feed;
+        }
+        if (typeof(this.tag[1]) != 'undefined'){
+            var tag2 = this.tag[1].replace(/[:\/\?#\[\]@!$&'()*+,;=\\]/g, '').replace(/[\:\s]/g,'-');
+            url2 = subdirectory + '/tag/' + tag2 + this.options.feed;
+        }
+
         $.ajax({
-            //url: '/tag/' + this.tag + this.options.feed,
-            url: this.options.feed, // EDIT: don't use tag
+            url: url,
             type: 'GET'
         })
             .done(function(data, textStatus, xhr) {
@@ -72,8 +89,29 @@
                 // Collect posts
                 posts = self.extractPosts(new Array(data));
 
-                // Render tag contents
-                self.displayTagContents(posts);
+                // If there's a second tag, grab that one as well
+                if (url2){
+                    $.ajax({
+                        url: url2,
+                        type: 'GET'
+                    })
+                        .done(function(data, textStatus, xhr) {
+                            // Collect posts
+                            var posts2 = self.extractPosts(new Array(data));
+
+                            // take 3 posts from the first tag, and 2 from the second, and combine them
+                            posts = posts.slice(0,3);
+                            posts2 = posts2.slice(0,2);
+                            posts = posts.concat(posts2);
+
+                            // Render tag contents
+                            self.displayTagContents(posts);
+                        });
+
+                }else {
+                    // Render tag contents
+                    self.displayTagContents(posts);
+                }
             })
             .fail(function(error) {
                 $(self.element).append($('<li class="' + self.options.liClass + '">' + error.statusText + '</li>'));
