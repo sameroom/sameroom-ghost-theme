@@ -72,11 +72,11 @@
 
         if (typeof(this.tag[0]) != 'undefined' && this.tag[0]){
             var tag1 = this.tag[0].replace(/[:\/\?#\[\]@!$&'()*+,;=\\]/g, '').replace(/[\:\s]/g,'-');
-            url = subdirectory + '/tag/' + tag1 + this.options.feed;
+            url = subdirectory + '/tag/' + tag1.toLowerCase() + this.options.feed;
         }
         if (typeof(this.tag[1]) != 'undefined'){
             var tag2 = this.tag[1].replace(/[:\/\?#\[\]@!$&'()*+,;=\\]/g, '').replace(/[\:\s]/g,'-');
-            url2 = subdirectory + '/tag/' + tag2 + this.options.feed;
+            url2 = subdirectory + '/tag/' + tag2.toLowerCase() + this.options.feed;
         }
 
         $.ajax({
