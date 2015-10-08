@@ -435,6 +435,66 @@ margin on the iframe, cause it breaks stuff. */
     margin: 0;
 }
 
+button {
+    display: inline-block;
+    padding: 10px 25px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    background-color : transparent;
+    white-space: nowrap;
+    border: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 1.8rem;
+    color: #364145;
+    text-decoration: none;
+    position: relative;
+    top: -1px;
+    transition: all 0.25s;
+}
+
+button:focus{
+     outline: none;
+ }
+
+button:hover,
+button:active{
+     transition: all 0.125s;
+ }
+
+button.disabled,
+button[disabled]{
+     opacity: 0.5;
+     cursor: default;
+ }
+
+button.disabled:hover,
+button[disabled]:hover{
+     background-color: transparent;
+ }
+
+input[type="text"]{
+    padding: 8px 15px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid #B4B4B4;
+    margin-right: 0.5em;
+    vertical-align: top;
+}
+
+input[type="text"]:focus{
+    border-color: #aaa;
+}
+
+
 
 /* ==========================================================================
    3. Utilities - These things get used a lot
@@ -1348,6 +1408,52 @@ body:not(.post-template) .post-title {
     width: 45%;
     float: left;
 }
+
+
+
+.subscribe-form{
+    margin: 2em 0 0 0;
+    border: none;
+    display: inline-block;
+}
+
+/* Subscribe form is hidden for now */
+.subscribe-form{
+    display: none;
+}
+
+
+button.yellow{
+    background-color: #FAE16D;
+    border-radius: 5px;
+    transition: background-color 0.25s;
+}
+
+button.yellow:hover{
+    background-color: #d8c15a;
+    transition: background-color 0.125s;
+}
+
+#subscribeStatus.error,
+#subscribeStatus.warn,
+#subscribeStatus.success
+{
+    padding: 5px 15px;
+    margin: 0.5em 0 1em 0;
+}
+
+.error{
+    background-color: #f00;
+    color: #fff
+}.warn{
+    background-color: #e4cc39;
+    color: #fff
+}.success{
+    background-color: #46db5e;
+    color: #fff
+}
+
+
 
 
 /* ==========================================================================
