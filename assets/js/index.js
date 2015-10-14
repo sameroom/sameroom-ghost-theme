@@ -59,6 +59,60 @@
 
         $(".scroll-down").arctic_scroll();
 
+        // Handle subscribe form
+        $(document).on('submit', 'form.subscribe-form', function(e){
+            e.preventDefault();
+            var form = $(e.currentTarget);
+            var input = form.find('.email');
+            var status = form.find('#subscribeStatus');
+
+            if (input.val()){
+                // Disable form while processing
+                form.attr('disabled', true);
+                form.find(':input, button').attr('disabled', true);
+
+                // Clear status message
+                status.attr('class', '').html('');
+
+                $.ajax({
+                    method: "POST",
+                    url: '/ajax',
+                    data: {
+                        action: 'subscribe',
+                        address: input.val()
+                    },
+                    success: function (response) {
+                        // Success
+                        switch(response.status){
+                            case 'success':
+                                input.val('');
+                                status.html('Thank you!').addClass('success');
+                                break;
+
+                            case 'warn':
+                                status.html(response.message).addClass('warn');
+                                break;
+
+                            case 'error':
+                                status.html(response.message).addClass('error');
+                                break;
+
+                        }
+                    },
+                    error: function () {
+                        // Error
+                        status.html('Sorry, an error occurred').addClass('error');
+
+                    },
+                    complete: function(){
+                        // Re-enable form
+                        form.attr('disabled', false);
+                        form.find(':input, button').attr('disabled', false);
+                    }
+                });
+            }
+            return false;
+        })
 
     });
 
