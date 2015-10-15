@@ -150,4 +150,57 @@
         });
 
     };
+
+    $(document).ready(function(){
+        function randomString(length) {
+            var part = 10;
+            if (length > part) {
+                return randomString(part) + randomString(length - part);
+            }
+            return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+        }
+
+        var deviceId = '';
+        try {
+            deviceId = localStorage['deviceId'];
+        } catch (e) {}
+        var deviceId = deviceId || randomString(36);
+
+        try {
+            localStorage['deviceId'] = deviceId;
+        } catch (e) {}
+
+        var token;
+        try {
+            token = localStorage['token'];
+        } catch (e) { }
+
+        var beforeSend = function(xhr) {
+            if (token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+            }
+        };
+
+        var data = {
+            url: window.location.pathname + window.location.search,
+            referrer: document.referrer,
+            device_id: deviceId
+        };
+
+        var data = {
+            id: randomString(36),
+            name: 'page_view',
+            data: data
+        };
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "https://api.sameroom.io/events",
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            beforeSend: beforeSend
+        });
+    });
+
 })(jQuery, 'smartresize');
