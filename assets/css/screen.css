@@ -1417,12 +1417,6 @@ body:not(.post-template) .post-title {
     display: inline-block;
 }
 
-/* Subscribe form is hidden for now */
-.subscribe-form{
-    display: none;
-}
-
-
 button.yellow{
     background-color: #FAE16D;
     border-radius: 5px;

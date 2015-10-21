@@ -75,29 +75,17 @@
                 status.attr('class', '').html('');
 
                 $.ajax({
-                    method: "POST",
-                    url: '/ajax',
-                    data: {
-                        action: 'subscribe',
-                        address: input.val()
-                    },
+                    method: "PUT",
+                    url: 'https://api.sameroom.io/mailinglist',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        email: input.val()
+                    }),
                     success: function (response) {
                         // Success
-                        switch(response.status){
-                            case 'success':
-                                input.val('');
-                                status.html('Thank you!').addClass('success');
-                                break;
-
-                            case 'warn':
-                                status.html(response.message).addClass('warn');
-                                break;
-
-                            case 'error':
-                                status.html(response.message).addClass('error');
-                                break;
-
-                        }
+                        input.val('');
+                        status.html('Thank you!').addClass('success');
                     },
                     error: function () {
                         // Error
