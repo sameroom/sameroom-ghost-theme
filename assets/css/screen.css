@@ -956,14 +956,12 @@ body:not(.post-template) .post-title {
 }
 
 .post-content a{
-    background-color: #d2e5ee;
-    text-decoration: none;
+    color: #31718E;
+    text-decoration: underline;
 }
 
 .post-content a:hover{
-    color: #fff;
-    background-color: #5e6b73;
-    text-decoration: none;
+    color: #4f4f4f;
 }
 
 /* The author credit area after the post */
