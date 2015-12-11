@@ -45,39 +45,31 @@
 
     {{! Styles'n'Scripts }}
     <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "lightbox2/css/lightbox.css"}}" />
     <style>@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700|Roboto+Slab:700&subset=latin,cyrillic);</style>
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
 </head>
 <body class="{{body_class}}">
+    <div class="bodyWrap">
+        <div class="leftCol">
+            {{> headerContent}}
+        </div>
+        <div class="mainCol">
+            {{! Everything else gets inserted here }}
+            {{{body}}}
+        </div>
 
-    <div class="leftCol">
-        {{> headerContent}}
+        {{! Ghost outputs important scripts and data with this tag }}
+        {{ghost_foot}}
     </div>
-    <div class="mainCol">
-        {{! Everything else gets inserted here }}
-        {{{body}}}
-    </div>
-
-    {{! Ghost outputs important scripts and data with this tag }}
-    {{ghost_foot}}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     {{! The main JavaScript file for Casper }}
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
     <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
-    <script type="text/javascript" src="{{asset "js/jquery.ghost-town.js"}}"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function() {
-            // Populate post index
-            var tags = [];
-            jQuery('.post-meta .tags a').each(function () {
-                tags.push($(this).text());
-            })
-            jQuery('[data-tag]').data('tag', tags.join('::'));
-            jQuery('[data-tag]').ghostTown({limit: 5});
-        });
-    </script>
+    <script type="text/javascript" src="{{asset "lightbox2/js/lightbox.js"}}"></script>
+
 </body>
 </html>
