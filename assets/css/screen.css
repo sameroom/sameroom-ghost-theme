@@ -141,6 +141,10 @@ table { border-collapse: collapse; border-spacing: 0; }
     content: "\f602";
     font-size: 1.1em;
 }
+.icon-linkedin:before {
+    content: "\e900";
+    font-size: 1.1em;
+}
 .icon-google-plus:before {
     content: "\f603";
 }
@@ -161,6 +165,11 @@ table { border-collapse: collapse; border-spacing: 0; }
     content: "\f608";
 }
 
+.icon-linkedin{
+    position: relative;
+    top: 1px;
+}
+
 
 /* ==========================================================================
    2. General - Setting up some base styles
@@ -174,8 +183,7 @@ html {
 }
 
 body {
-    margin: 0 auto;
-    max-width: 850px;
+    margin: 0;
     height: 100%;
     max-height: 100%;
     font-family: Roboto, Arial, sans-serif;
@@ -188,6 +196,11 @@ body {
     background-color: #fff;
     padding: 0 20px;
     position: relative;
+}
+
+.bodyWrap{
+    margin: 0 auto;
+    max-width: 850px;
 }
 
 ::-moz-selection {
@@ -302,7 +315,7 @@ hr {
 blockquote {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    margin: 1.75em 0 1.75em -2.2em;
+    margin: 1.75em 0 1.75em 0em;
     padding: 0 0 0 1.75em;
     border-left: #4A4A4A 0.4em solid;
 }
@@ -494,7 +507,11 @@ input[type="text"]:focus{
     border-color: #aaa;
 }
 
-
+.lb-closeContainer{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
 
 /* ==========================================================================
    3. Utilities - These things get used a lot
@@ -1020,7 +1037,7 @@ body:not(.post-template) .post-title {
 .post-footer .share {
     display: inline-block;
     vertical-align: middle;
-    width: 140px;
+    width: 160px;
     position: relative;
     top: 3px;
     margin-left: 1em;

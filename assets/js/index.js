@@ -57,6 +57,19 @@
         casperFullImg();
         $(window).smartresize(casperFullImg);
 
+        // Add images lightbox
+        $('img.post-image, img.full-img').each(function(img){
+            if ($(this).parents('a').length == 0){
+                $(this).wrap('<a href="' + $(this).attr('src') + '" data-lightbox="lightbox">');
+            }else{
+                $(this).closest('a').data('lightbox', 'lightbox');
+            }
+        })
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
+
         $(".scroll-down").arctic_scroll();
 
         // Handle subscribe form

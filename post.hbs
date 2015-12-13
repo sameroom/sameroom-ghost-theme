@@ -43,14 +43,27 @@
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <span class="hidden">Google+</span>
                 </a>
+                <a class="icon-linkedin" href="http://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}"
+                   onclick="window.open(this.href, 'linkedin-share', 'width=490,height=360');return false;">
+                    <span class="hidden">LinkedIn</span>
+                </a>
             </section>
             {{>subscribe}}
 
         </footer>
 
+
         <section class="post-index">
-            <h2>Looking for more integrations?</h2>
-            <ul data-tag=""></ul>
+            {{#get "posts" filter=(postsFilter) limit="5"}}
+                {{#if posts}}
+                    <h2>Looking for more integrations?</h2>
+                    <ul>
+                    {{#foreach posts}}
+                        <li><a href="{{url}}"><strong>{{title}}</strong></a></li>
+                    {{/foreach}}
+                    </ul>
+                {{/if}}
+            {{/get}}
         </section>
 
     </article>
