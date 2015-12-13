@@ -58,7 +58,7 @@
         $(window).smartresize(casperFullImg);
 
         // Add images lightbox
-        $('img.post-image, img.full-img').each(function(img){
+        $('.post-header img, .post-content img').each(function(img){
             if ($(this).parents('a').length == 0){
                 $(this).wrap('<a href="' + $(this).attr('src') + '" data-lightbox="lightbox">');
             }else{
