@@ -202,6 +202,31 @@
             data: JSON.stringify(data),
             beforeSend: beforeSend
         });
+
+        if (window.Intercom) {
+            var INTERCOM_APP_ID="e1h1ux8b";
+
+            Intercom('boot', {
+                app_id: INTERCOM_APP_ID,
+            });
+
+            if (token) {
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: "https://api.sameroom.io/session",
+                    beforeSend: beforeSend
+                }).done(function(data) {
+                    var agent = data.agent || {};
+                    var agentParams = {
+                        name: agent.display_name,
+                        email: agent.email || agent.common_name,
+                        user_id: agent.id,
+                    };
+                    Intercom('update', agentParams)
+                });
+            }
+        }
     });
 
 })(jQuery, 'smartresize');
