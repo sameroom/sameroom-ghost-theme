@@ -219,9 +219,10 @@
                 }).done(function(data) {
                     var agent = data.agent || {};
                     var agentParams = {
-                        name: agent.display_name,
-                        email: agent.email || agent.common_name,
+                        name: agent.display_name || agent.common_name,
+                        email: agent.email,
                         user_id: agent.id,
+                        user_hash: agent.intercom_user_hash,
                     };
                     Intercom('update', agentParams)
                 });
