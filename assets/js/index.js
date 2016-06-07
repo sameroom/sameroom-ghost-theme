@@ -203,12 +203,8 @@
             beforeSend: beforeSend
         });
 
-        if (window.Intercom) {
-            var INTERCOM_APP_ID="e1h1ux8b";
-
-            Intercom('boot', {
-                app_id: INTERCOM_APP_ID,
-            });
+        if (window.drift) {
+            drift.load('yndw5bpe8n6i')
 
             if (token) {
                 $.ajax({
@@ -221,10 +217,9 @@
                     var agentParams = {
                         name: agent.display_name || agent.common_name,
                         email: agent.email,
-                        user_id: agent.id,
-                        user_hash: agent.intercom_user_hash,
+                        plan: agent.payment_data && agent.payment_data.stripe_plan_id,
                     };
-                    Intercom('update', agentParams)
+                    drift.identify(agent.id, agentParams);
                 });
             }
         }
